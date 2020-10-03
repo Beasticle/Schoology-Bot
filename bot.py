@@ -9,12 +9,12 @@ f = open(r'D:\\Microsoft VS Code\\Projects\\Random Python Shit\\Discord Bot for 
 cfg = yaml.load(f, Loader=yaml.FullLoader)
 
 sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
-
+sc.limit = 100
 #print('Your name is %s' % sc.get_me().name_display)
 #print(sc.get_assignment(section_id=2733685453, assignment_id=2897150593), output)
-assignment = sc.get_assignment(section_id=2733685453, assignment_id=2897150593)
+assignments = sc.get_assignments(section_id=2733685453)
 #assignment = json.loads(x)
-print(assignment.title, assignment.due)
+message = f'Title: {assignments[44].title}, Due: {assignments[44].due}'
 
 client = commands.Bot(command_prefix= '/')
 
@@ -29,8 +29,8 @@ async def ping(ctx):
 
 @client.command()
 async def assignment(ctx):
-    global assignment
-    await ctx.send(f'Here is an assignment {assignment.title, assignment.due}')
+
+    await ctx.send(f'Here is an assignment, {message}')
 
 
 
