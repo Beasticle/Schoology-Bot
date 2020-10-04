@@ -15,7 +15,9 @@ assignment = sc.get_assignment(section_id=2733685453, assignment_id=3107425856)
 assignments = sc.get_assignments(section_id=2733685453)
 print(assignment.title)
 
-numassignment = 0
+numassignment = -1
 for assignment in assignments:
     numassignment = numassignment + 1
     print(assignments[numassignment].title, assignments[numassignment].due, numassignment)
+    
+print(assignments[numassignment].title)
