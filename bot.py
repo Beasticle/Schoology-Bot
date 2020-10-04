@@ -41,7 +41,7 @@ async def assignments(ctx):
 async def background_task():
     await client.wait_until_ready()
     channel = client.get_channel(761395444773027860) # Insert channel ID here
-    if datetime.datetime.today().weekday() == 6:
+    if datetime.datetime.today().weekday() == 0:
             await channel.send(message)
 
 client.loop.create_task(background_task())
