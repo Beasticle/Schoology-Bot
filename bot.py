@@ -42,7 +42,7 @@ async def background_task():
     await client.wait_until_ready()
     channel = client.get_channel(761395444773027860) # Insert channel ID here
     if datetime.datetime.today().weekday() == 0:
-            await channel.send(message)
+            await channel.send(f'Here is the most current assignment: {message}')
 
 client.loop.create_task(background_task())
 client.run('NzYxMzk3MDI1NjMwNzE1OTE2.X3aAPA.jPt5ndp91qFz4M9vkBdg4IyAKVY')
