@@ -2,9 +2,10 @@ import schoolopy
 import yaml
 import discord
 from discord.ext import commands, tasks
+from gpiozero import CPUTemperature
 import datetime
 
-f = open(r'D:\\Microsoft VS Code\\Projects\\Random Python Shit\\Discord Bot for school\\config.yml')
+f = open(r'config.yml')
 cfg = yaml.load(f, Loader=yaml.FullLoader)
 
 sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
@@ -13,6 +14,7 @@ sc.limit = 100
 assignments = sc.get_assignments(section_id=2733685453)
 totalAssignments = []
 numassignment = -1
+cpu = CPUTemperature()
 
 for assignment in assignments:
     numassignment = numassignment + 1
@@ -37,9 +39,14 @@ async def assignment(ctx):
 @client.command()
 async def assignments(ctx):
     await ctx.send(f'Here are all {numassignment+1} of your assignments. {totalAssignments}')
+
+@client.command()
+async def system(ctx):
+    await ctx.send(f'CPU temp is: {cpu.temperature}C')
     
 async def background_task():
     await client.wait_until_ready()
+    print(cpu.temperature)
     channel = client.get_channel(761395444773027860) # Insert channel ID here
     if datetime.datetime.today().weekday() == 0:
             await channel.send(f'Here is the most current assignment: {message}')
