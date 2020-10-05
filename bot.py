@@ -60,4 +60,4 @@ async def background_task():
             await channel.send(f'Here is the most current assignment: {message}')
 
 client.loop.create_task(background_task())
-client.run('NzYxMzk3MDI1NjMwNzE1OTE2.X3aAPA.jPt5ndp91qFz4M9vkBdg4IyAKVY')
+client.run(cfg['token'])
