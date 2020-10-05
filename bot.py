@@ -1,6 +1,7 @@
 import schoolopy
 import yaml
 import discord
+from gpiozero import CPUTemperature
 from discord.ext import commands, tasks
 import datetime
 
@@ -13,6 +14,8 @@ sc.limit = 100
 assignments = sc.get_assignments(section_id=2733685453)
 totalAssignments = []
 numassignment = -1
+
+cpu = CPUTemperature()
 
 for assignment in assignments:
     numassignment = numassignment + 1
@@ -38,9 +41,14 @@ async def assignment(ctx):
 async def assignments(ctx):
     await ctx.send(f'Here are all {numassignment+1} of your assignments. {totalAssignments}')
     
+@client.command()
+async def system(ctx):
+    await ctx.send(f'CPU temp is : {cpu.temperature}')
+    
 async def background_task():
     await client.wait_until_ready()
     channel = client.get_channel(761395444773027860) # Insert channel ID here
+    print(cpu.temperature)
     if datetime.datetime.today().weekday() == 0:
             await channel.send(f'Here is the most current assignment: {message}')
 
