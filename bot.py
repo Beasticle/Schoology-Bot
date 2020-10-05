@@ -12,6 +12,9 @@ sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
 sc.limit = 100
 
 assignments = sc.get_assignments(section_id=2733685453)
+updates = sc.get_section_updates(section_id=2733685453)
+print(updates)
+totalUpdates = []
 totalAssignments = []
 numassignment = -1
 
@@ -20,8 +23,12 @@ cpu = CPUTemperature()
 for assignment in assignments:
     numassignment = numassignment + 1
     totalAssignments.append(assignments[numassignment].title)
+for update in updates:
+    numupdates =+ 1
+    totalUpdates.append(updates[numupdates])
 
 message = f'Title: {assignments[numassignment].title}, Due: {assignments[numassignment].due}'
+updates = f"All of Mr. Hall's updates{totalUpdates.body}"
 
 client = commands.Bot(command_prefix= '/')
 
