@@ -5,7 +5,7 @@ from gpiozero import CPUTemperature
 from discord.ext import commands, tasks
 import datetime
 
-f = open(r'D:\\Microsoft VS Code\\Projects\\Random Python Shit\\Discord Bot for school\\config.yml')
+f = open(r'config.yml')
 cfg = yaml.load(f, Loader=yaml.FullLoader)
 
 sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
@@ -43,7 +43,7 @@ async def assignments(ctx):
     
 @client.command()
 async def system(ctx):
-    await ctx.send(f'CPU temp is : {cpu.temperature}')
+    await ctx.send(f'CPU temp is : {cpu.temperature}C')
     
 async def background_task():
     await client.wait_until_ready()
