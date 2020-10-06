@@ -3,7 +3,6 @@ import yaml
 import discord
 from gpiozero import CPUTemperature
 from discord.ext import commands, tasks
-from gpiozero import CPUTemperature
 import datetime
 
 f = open(r'config.yml')
@@ -22,7 +21,7 @@ cpu = CPUTemperature()
 cpu = CPUTemperature()
 
 for assignment in assignments:
-    numassignment = numassignment + 1
+    numassignment =+ 1
     totalAssignments.append(assignments[numassignment].title)
 for update in updates:
     numupdates =+ 1
@@ -57,12 +56,8 @@ async def system(ctx):
 async def blog(ctx):
     await ctx.send(f'Here is the most recent update {update}')
     
-@client.command()
-async def blogs(ctx):
-    await ctx.send(f'Here all of the updates {totalUpdates}')
-    
 async def background_task():
-    await client.wait_until_ready()
+    #await client.wait_until_ready()
     print(cpu.temperature)
     channel = client.get_channel(cfg['discord_channel']) # Insert channel ID here
     print(cpu.temperature)
