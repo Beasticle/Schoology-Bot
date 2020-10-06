@@ -25,10 +25,10 @@ for assignment in assignments:
     totalAssignments.append(assignments[numassignment].title)
 for update in updates:
     numupdates =+ 1
-    totalUpdates.append(updates[numupdates])
+    totalUpdates.append(updates[numupdates].body)
 
 message = f'Title: {assignments[numassignment].title}, Due: {assignments[numassignment].due}'
-update = f"All of Mr. Hall's updates{updates[numupdates].body}"
+update = f"Here is the most recent update{updates[numupdates].body}"
 
 client = commands.Bot(command_prefix= '/')
 
@@ -50,7 +50,11 @@ async def assignments(ctx):
     
 @client.command()
 async def update(ctx):
-    await ctx.send(f'Here is the most recent update')
+    await ctx.send(f'Here is the most recent update {update}')
+    
+@client.command()
+async def updates(ctx):
+    await ctx.send(f'Here all of the updates {totalUpdates}')
     
 @client.command()
 async def system(ctx):
