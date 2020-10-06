@@ -55,11 +55,11 @@ async def system(ctx):
     await ctx.send(f'CPU temp is: {cpu.temperature}C')
     
 @client.command()
-async def update(ctx):
+async def Hall_Update(ctx):
     await ctx.send(f'Here is the most recent update {update}')
     
 @client.command()
-async def updates(ctx):
+async def Hall_Updates(ctx):
     await ctx.send(f'Here all of the updates {totalUpdates}')
     
 @client.command()
