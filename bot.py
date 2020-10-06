@@ -49,11 +49,11 @@ async def assignments(ctx):
     await ctx.send(f'Here are all {numassignment+1} of your assignments. {totalAssignments}')
     
 @client.command()
-async def update(ctx):
+async def Hall_Update(ctx):
     await ctx.send(f'Here is the most recent update {update}')
     
 @client.command()
-async def updates(ctx):
+async def Hall_Updates(ctx):
     await ctx.send(f'Here all of the updates {totalUpdates}')
     
 @client.command()
