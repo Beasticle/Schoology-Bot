@@ -16,7 +16,6 @@ updates = sc.get_section_updates(section_id=cfg['sectionid'])
 totalUpdates = []
 totalAssignments = []
 numassignment = -1
-cpu = CPUTemperature()
 
 cpu = CPUTemperature()
 
@@ -58,9 +57,7 @@ async def blog(ctx):
     
 async def background_task():
     #await client.wait_until_ready()
-    print(cpu.temperature)
     channel = client.get_channel(cfg['discord_channel']) # Insert channel ID here
-    print(cpu.temperature)
     if datetime.datetime.today().weekday() == 0 and datetime.time.hour == 0:
             await channel.send(f'Here is the most current assignment: {message}')
 
