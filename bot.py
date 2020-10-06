@@ -30,7 +30,7 @@ for update in updates:
     totalUpdates.append(updates[numupdates])
 
 message = f'Title: {assignments[numassignment].title}, Due: {assignments[numassignment].due}'
-updates = f"All of Mr. Hall's updates{totalUpdates.body}"
+update = f"All of Mr. Hall's updates{updates[numupdates].body}"
 
 client = commands.Bot(command_prefix= '/')
 
@@ -53,6 +53,10 @@ async def assignments(ctx):
 @client.command()
 async def system(ctx):
     await ctx.send(f'CPU temp is: {cpu.temperature}C')
+    
+@client.command()
+async def update(ctx):
+    await ctx.send(f'Here is the most recent update')
     
 @client.command()
 async def system(ctx):

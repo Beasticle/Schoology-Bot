@@ -1,2 +1,4 @@
 *.yml
+*.py
+!bot.py
 !example.yml
