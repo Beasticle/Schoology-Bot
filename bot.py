@@ -14,7 +14,6 @@ sc.limit = 100
 
 assignments = sc.get_assignments(section_id=2733685453)
 updates = sc.get_section_updates(section_id=2733685453)
-print(updates)
 totalUpdates = []
 totalAssignments = []
 numassignment = -1
@@ -55,11 +54,11 @@ async def system(ctx):
     await ctx.send(f'CPU temp is: {cpu.temperature}C')
     
 @client.command()
-async def Hall_Update(ctx):
+async def blog(ctx):
     await ctx.send(f'Here is the most recent update {update}')
     
 @client.command()
-async def Hall_Updates(ctx):
+async def blogs(ctx):
     await ctx.send(f'Here all of the updates {totalUpdates}')
     
 @client.command()
