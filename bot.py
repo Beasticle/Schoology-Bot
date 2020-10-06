@@ -12,8 +12,8 @@ cfg = yaml.load(f, Loader=yaml.FullLoader)
 sc = schoolopy.Schoology(schoolopy.Auth(cfg['key'], cfg['secret']))
 sc.limit = 100
 
-assignments = sc.get_assignments(section_id=2733685453)
-updates = sc.get_section_updates(section_id=2733685453)
+assignments = sc.get_assignments(section_id=cfg['sectionid'])
+updates = sc.get_section_updates(section_id=cfg['sectionid'])
 totalUpdates = []
 totalAssignments = []
 numassignment = -1
@@ -64,7 +64,7 @@ async def blogs(ctx):
 async def background_task():
     await client.wait_until_ready()
     print(cpu.temperature)
-    channel = client.get_channel(761395444773027860) # Insert channel ID here
+    channel = client.get_channel(cfg['discord_channel']) # Insert channel ID here
     print(cpu.temperature)
     if datetime.datetime.today().weekday() == 0 and datetime.time.hour == 0:
             await channel.send(f'Here is the most current assignment: {message}')
