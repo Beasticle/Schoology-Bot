@@ -61,16 +61,12 @@ async def blog(ctx):
 async def blogs(ctx):
     await ctx.send(f'Here all of the updates {totalUpdates}')
     
-@client.command()
-async def system(ctx):
-    await ctx.send(f'CPU temp is : {cpu.temperature}C')
-    
 async def background_task():
     await client.wait_until_ready()
     print(cpu.temperature)
     channel = client.get_channel(761395444773027860) # Insert channel ID here
     print(cpu.temperature)
-    if datetime.datetime.today().weekday() == 0:
+    if datetime.datetime.today().weekday() == 0 and datetime.time.hour == 0:
             await channel.send(f'Here is the most current assignment: {message}')
 
 client.loop.create_task(background_task())
