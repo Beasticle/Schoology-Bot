@@ -1,4 +1,5 @@
 *.yml
 *.py
+*.swp
 !bot.py
 !example.yml
